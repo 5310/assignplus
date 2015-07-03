@@ -1,6 +1,6 @@
 {
   "name": "assignplus",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "[ES2015] A custom `Object.assign`-like function that can be overridden with symbolic annotations for advanced functionality.",
   "main": "assignplus.babel.js",
   "scripts": {
