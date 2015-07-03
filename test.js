@@ -1,6 +1,7 @@
 import assignPlus, {symbols} from './assignplus'
 import assert from 'assert'
 
+// Default behavior.
 assert.deepEqual(
   assignPlus(
 
@@ -43,82 +44,94 @@ assert.deepEqual(
   'Default behavior failed.'
 )
 
-let symbol = Symbol()
-assert.ok(
-  assignPlus(
-    {},
-    {[symbol]: true}
-  )[symbol],
-  'Enumerable symbolic property not copied.'
-)
+// Symbolic property handling.
+;(() => {
 
-assert.ok(
-  assignPlus(
-    {a: {}},
-    {a: Object.defineProperty({}, [symbol], {value: true})}
-  ).a[symbol] === undefined,
-  'Non-numerable symbolic property copied.'
-)
+  let symbol = Symbol()
 
-assert.ok(
-  assignPlus(
-    {a: {}},
-    {a: {[symbols.behavior]: true}}
-  ).a[symbol] === undefined,
-  'Behavior symbolic property copied.'
-)
+  assert.ok(
+    assignPlus(
+      {},
+      {[symbol]: true}
+    )[symbol],
+    'Enumerable symbolic property not copied.'
+  )
 
-assert.deepEqual(
-  assignPlus(
-    {
-      a: {
-        aa: 11,
-        bb: {
-          bbb: 222
+  assert.ok(
+    assignPlus(
+      {a: {}},
+      {a: Object.defineProperty({}, [symbol], {value: true})}
+    ).a[symbol] === undefined,
+    'Non-numerable symbolic property copied.'
+  )
+
+  assert.ok(
+    assignPlus(
+      {a: {}},
+      {a: {[symbols.behavior]: true}}
+    ).a[symbol] === undefined,
+    'Behavior symbolic property copied.'
+  )
+
+})()
+
+// Merge behavior.
+;(() => {
+
+  assert.deepEqual(
+    assignPlus(
+      {
+        a: {
+          aa: 11,
+          bb: {
+            bbb: 222
+          }
+        }
+      },
+      {
+        a: {
+          [symbols.behavior]: symbols.behaviors.merge,
+          aa: 111,
+          bb: {
+            ccc: 333
+          },
+          cc: 33
         }
       }
-    },
+    ),
     {
       a: {
-        [symbols.behavior]: symbols.behaviors.merge,
         aa: 111,
         bb: {
           ccc: 333
         },
         cc: 33
       }
-    }
-  ),
-  {
-    a: {
-      aa: 111,
-      bb: {
-        ccc: 333
-      },
-      cc: 33
-    }
-  },
-  'Merge failed.'
-)
+    },
+    'Merge failed.'
+  )
 
-assert.throws(
-  () => {
-    assignPlus(
-      {
-        a: 1
-      },
-      {
-        a: {
-          [symbols.behavior]: symbols.behaviors.merge,
-          aa: 22
+  assert.throws(
+    () => {
+      assignPlus(
+        {
+          a: 1
+        },
+        {
+          a: {
+            [symbols.behavior]: symbols.behaviors.merge,
+            aa: 22
+          }
         }
-      }
-    )
-  },
-  'Target is not an object and cannot be merged with',
-  'Merge exception didn\'t raise.'
-)
+      )
+    },
+    'Target is not an object and cannot be merged with',
+    'Merge exception didn\'t raise.'
+  )
 
+})()
+
+// Deep merge behavior.
 assert.deepEqual(
   assignPlus(
     {
@@ -153,6 +166,7 @@ assert.deepEqual(
   'Deep merge failed.'
 )
 
+// Define property behavior.
 assert.deepEqual(
   assignPlus(
     {},
@@ -170,6 +184,7 @@ assert.deepEqual(
   'Define failed.'
 )
 
+// Clone behavior.
 // TODO: Uncomment when cloning is actually implemented.
 // ;(() => {
 //   let x = {}
@@ -191,6 +206,7 @@ assert.deepEqual(
 //   assert.ok(!Object.is(x.a.bb, y.a.bb), 'Object properties are merely copied upon cloning.')
 // })()
 
+// Remove Behavior.
 assert.deepEqual(
   assignPlus(
     {
