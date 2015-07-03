@@ -7,6 +7,7 @@
 [![Build](http://img.shields.io/travis/5310/assignplus.svg?style=flat)](https://travis-ci.org/5310/assignplus)
 [![Release](http://img.shields.io/badge/release-v0.1.0-orange.svg?style=flat)](https://github.com/5310/assignplus/releases)
 [![jspm](https://img.shields.io/badge/jspm-github:5310/assignplus-blue.svg?style=flat)](http://jspm.io)
+[![jspm](https://img.shields.io/badge/npm-5310/assignplus-blue.svg?style=flat)](https://docs.npmjs.com/cli/install)
 
 `assignPlus` is a custom `Object.assign`-like function that can be overridden with symbolic annotations for advanced functionality.
 
