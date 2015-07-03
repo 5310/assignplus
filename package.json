@@ -6,7 +6,7 @@
   "scripts": {
     "test": "babel-node test.js",
     "compile": "babel assignplus.js > assignplus.babel.js",
-    "prepublish": "npm run compile"
+    "install": "npm run compile"
   },
   "keywords": [
     "assign",
