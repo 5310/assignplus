@@ -1,12 +1,30 @@
 {
+  "name": "assignplus",
+  "version": "0.1.0",
+  "description": "A modified Object.assign-like function that takes symbolic assignment behaviors for advanced functionality.",
+  "main": "assignplus.js",
+  "scripts": {
+    "test": "babel-node test.js"
+  },
+  "keywords": [
+    "assign",
+    "symbol",
+    "merge",
+    "deepmerge"
+  ],
+  "author": "Sayantan Chaudhuri",
+  "license": "MIT",
+  "devDependencies": {
+    "assert": "^1.3.0",
+    "babel": "^5.6.14"
+  },
   "jspm": {
     "format": "es6",
     "directories": {},
     "devDependencies": {
       "babel": "npm:babel-core@^5.1.13",
       "babel-runtime": "npm:babel-runtime@^5.1.13",
-      "core-js": "npm:core-js@^0.9.4",
-      "assert": "github:jspm/nodelibs-assert@^0.1.0"
+      "core-js": "npm:core-js@^0.9.4"
     }
   }
 }
