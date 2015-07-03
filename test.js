@@ -100,7 +100,7 @@ assert.deepEqual(
       }
     ),
     {
-      a: {
+      a: { // This nested object has been merged with instead of being overwritten.
         aa: 111,
         bb: {
           ccc: 333
@@ -132,39 +132,77 @@ assert.deepEqual(
 })()
 
 // Deep merge behavior.
-assert.deepEqual(
-  assignPlus(
-    {
-      a: {
-        aa: 11,
-        bb: {
-          bbb: 222
+;(() => {
+
+  assert.deepEqual(
+    assignPlus(
+      {
+        a: {
+          aa: 11,
+          bb: {
+            bbb: 222
+          }
+        }
+      },
+      {
+        [symbols.behavior]: symbols.behaviors.deep,
+        a: {
+          aa: 111,
+          bb: {
+            ccc: 333
+          },
+          cc: 33
         }
       }
-    },
-    {
-      [symbols.behavior]: symbols.behaviors.deep,
+    ),
+    { // All the nested objects have been merged instead of being overwritten.
       a: {
         aa: 111,
         bb: {
+          bbb: 222,
           ccc: 333
         },
         cc: 33
       }
-    }
-  ),
-  {
-    a: {
-      aa: 111,
-      bb: {
-        bbb: 222,
-        ccc: 333
+    },
+    'Deep merge failed.'
+  )
+
+  assert.deepEqual(
+    assignPlus(
+      {
+        a: {
+          aa: 11,
+          bb: {
+            bbb: 222
+          }
+        }
       },
-      cc: 33
-    }
-  },
-  'Deep merge failed.'
-)
+      {
+        [symbols.behavior]: symbols.behaviors.deep,
+        a: {
+          aa: 111,
+          bb: {
+            [symbols.behavior]: symbols.behaviors.overwrite,
+            ccc: 333
+          },
+          cc: 33
+        }
+      }
+    ),
+    {
+      a: {
+        aa: 111,
+        bb: { // This nested object has been overwritten.
+          ccc: 333
+        },
+        cc: 33
+      }
+    },
+    'Deep merge overwrite failed.'
+  )
+
+})()
 
 // Define property behavior.
 assert.deepEqual(
