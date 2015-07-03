@@ -10,7 +10,8 @@
     "assign",
     "symbol",
     "merge",
-    "deepmerge"
+    "deepmerge",
+    "es2015"
   ],
   "author": "Sayantan Chaudhuri",
   "license": "MIT",
