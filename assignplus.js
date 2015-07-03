@@ -77,9 +77,9 @@ export default function assignPlus (target, ...sources) {
 export const symbols = {
   behavior: Symbol('behavior'),
   behaviors: {
-    overwrite: Symbol('overwrite'),
     merge: Symbol('merge'),
     deep: Symbol('deep merge'),
+    overwrite: Symbol('overwrite'),
     clone: Symbol('deep clone'),
     define: Symbol('define'),
     remove: Symbol('delete')
