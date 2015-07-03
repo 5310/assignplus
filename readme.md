@@ -1,5 +1,12 @@
 # assignPlus
 
+[![ecmascript-2015](https://img.shields.io/badge/es-2015-green.svg?style=flat)](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-green.svg?style=flat)](https://github.com/feross/standard)
+[![License](http://img.shields.io/badge/license-mit-green.svg?style=flat)](https://github.com/lahuan/lahuanjs-com-events/blob/master/LICENSE)
+[![Dependency Status](https://david-dm.org/5310/assignplus.svg)](https://david-dm.org/5310/assignplus)
+[![Release](http://img.shields.io/badge/release-v0.1.0-orange.svg?style=flat)](https://github.com/5310/assignplus/releases)
+[![jspm](https://img.shields.io/badge/jspm-github:5310/assignplus-blue.svg?style=flat)](http://jspm.io)
+
 `assignPlus` is a custom `Object.assign`-like function that can be overridden with symbolic annotations for advanced functionality.
 
 With it you can not only do what `Object.assign` can, copy first-level enumerable own-properties of a object to another, but also merge property objects, whether by an object-by-object basis or recursively, and fully define properties on the target, or remove a property entirely. All with symbolic annotations defining the assignment behaviors.
