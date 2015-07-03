@@ -4,6 +4,7 @@
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-green.svg?style=flat)](https://github.com/feross/standard)
 [![License](http://img.shields.io/badge/license-mit-green.svg?style=flat)](https://github.com/lahuan/lahuanjs-com-events/blob/master/LICENSE)
 [![Dependency Status](https://david-dm.org/5310/assignplus.svg)](https://david-dm.org/5310/assignplus)
+[![Build](http://img.shields.io/travis/5310/assignplus.svg?style=flat)](https://travis-ci.org/5310/assignplus)
 [![Release](http://img.shields.io/badge/release-v0.1.0-orange.svg?style=flat)](https://github.com/5310/assignplus/releases)
 [![jspm](https://img.shields.io/badge/jspm-github:5310/assignplus-blue.svg?style=flat)](http://jspm.io)
 
