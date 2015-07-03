@@ -63,7 +63,7 @@ export default function assignPlus (target, ...sources) {
     let deep = false
     if (source[symbols.behavior] !== undefined) {
       deep = source[symbols.behavior] === symbols.behaviors.deep
-      if (source[symbols.behavior] !== symbols.behaviors.deep && source[symbols.behavior] !== symbols.behaviors.merge) {
+      if (!deep) {
         console.warn(`Invalid behavior ${source[symbols.behavior].toString()} for root object ignored.`)
       }
     }
