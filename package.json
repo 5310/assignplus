@@ -1,7 +1,7 @@
 {
   "name": "assignplus",
   "version": "0.1.0",
-  "description": "A modified Object.assign-like function that takes symbolic assignment behaviors for advanced functionality.",
+  "description": "[ES2015] A custom `Object.assign`-like function that can be overridden with symbolic annotations for advanced functionality.",
   "main": "assignplus.js",
   "scripts": {
     "test": "babel-node test.js"
