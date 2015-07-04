@@ -22,24 +22,34 @@ This is an ES2015 module.
   - Without annotation, behaves just like `Object.assign`.
 
 - Behaviors:
+  - Default
+    - Without any annotation, by default a source sub-object's properties are merely copied over to the equivalent property on the target.
+    - Sub-objects nested inside a default object _will not_ be checked for annotation!
   - `merge`
     - Copies all enumerable own properties over to the target object.
-    - If a nested object has this annotation, it does not overwrite the equivalent property on the target.
+    - If a nested sub-object has this annotation, it does not overwrite the equivalent property on the target.
       - But does throw an exception if the equivalent target property is not an object itself.
     - Overwrites properties if they collide.
+    - Sub-objects nested immediately inside a merge object _will_ be checked for further annotation.
   - `deep`
-    - Recursively, or "deeply" merges all objects from this annotated level and lower.
-    - Can be an annotation in the root, unlike the other annotations.
+    - Recursively or "deeply" merges all objects from this annotated level and lower.
+    - Can be an annotation on the root, deeply merging the entire source object.
+    - Sub-objects nested inside a deep object will be assumed to be annotated with deep merge.
   - `overwrite`
     - Used to break out of a deep merge.
-    - The nested object with this property will overwrite the equivalent property on the target.
+    - It is functionally equivalent to the default behavior.
   - `define`
-    - The nested object with this annotation will invoke `Object.defineProperty`!
+    - A nested sub-object with this annotation will invoke `Object.defineProperty`!
       - The property will be defined on the equivalent level on the target.
       - The name of the object will become the name of the property being defined.
       - The annotated object itself will be passed to `Object.defineProperty` as configuration.
   - `remove`
     - A nested object with this annotation will delete the equivalent property on the target.
+  - Arbitrary handler
+    - If the behavior annotation is a function, it will be treated as an arbitrary handler.
+    - It will be passed the current level's target and source sub-objects respectively, and whatever it returns will be ran through the process again in place of the source sub-object.
+    - Can be an annotation on the root, replacing the entire source object with the returned value.
+      - If this value isn't an object, the process will fail, as expected.
 
 ## Example
 ```

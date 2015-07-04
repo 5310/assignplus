@@ -259,3 +259,27 @@ assert.deepEqual(
   {},
   'Remove failed.'
 )
+
+// Arbitrary handler Behavior.
+assert.deepEqual(
+  assignPlus(
+    {},
+    {
+      [symbols.behavior]: (target, source) => (
+        {
+          a: {
+            aa: 22
+          },
+          b: {[symbols.behavior]: (target, source) => 2}
+        }
+      )
+    }
+  ),
+  {
+    a: {
+      aa: 22
+    },
+    b: 2
+  },
+  'Arbitrary handler behavior failed.'
+)

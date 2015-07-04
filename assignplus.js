@@ -25,6 +25,7 @@ export default function assignPlus (target, ...sources) {
           delete target[name]
           break
         default:
+          // Invalid behavior warning.
           if (deep) {
             recurse(target[name], source[name], deep)
           } else {
@@ -39,6 +40,11 @@ export default function assignPlus (target, ...sources) {
   }
 
   function recurse (target, source, deep) {
+    if (typeof source[symbols.behavior] === 'function') {
+      source = source[symbols.behavior](target, source)
+    } else {
+      deep = deep || (source[symbols.behavior] === symbols.behaviors.deep)
+    }
     if (typeof target === 'object') {
       for (let name of Object.keys(source)) {
         implement(name, target, source, deep)
@@ -60,14 +66,13 @@ export default function assignPlus (target, ...sources) {
   }
 
   for (let source of sources) {
-    let deep = false
-    if (source[symbols.behavior] !== undefined) {
-      deep = source[symbols.behavior] === symbols.behaviors.deep
-      if (!deep) {
-        console.warn(`Invalid behavior ${source[symbols.behavior].toString()} for root object ignored.`)
-      }
-    }
-    recurse(target, source, deep)
+    // if (
+    //   source[symbols.behavior] !== symbols.deep &&
+    //   typeof source[symbols.behavior] !== 'function'
+    // ) {
+    //   console.warn(`Invalid behavior on root object, not deep merge or a handler, ignored.`)
+    // }
+    recurse(target, source)
   }
 
   return target
