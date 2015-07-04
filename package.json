@@ -1,7 +1,7 @@
 {
   "name": "assignplus",
   "version": "0.1.1",
-  "description": "[ES2015] A custom `Object.assign`-like function that can be overridden with symbolic annotations for advanced functionality.",
+  "description": "A custom `Object.assign`-like function that can be overridden with symbolic annotations for advanced functionality. [ES2015]",
   "main": "assignplus.babel.js",
   "scripts": {
     "test": "babel-node test.js",
@@ -13,7 +13,8 @@
     "symbol",
     "merge",
     "deepmerge",
-    "es2015"
+    "es2015",
+    "es6"
   ],
   "author": "Sayantan Chaudhuri",
   "license": "MIT",
