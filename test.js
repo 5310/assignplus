@@ -222,28 +222,6 @@ assert.deepEqual(
   'Define failed.'
 )
 
-// Clone behavior.
-// TODO: Uncomment when cloning is actually implemented.
-// ;(() => {
-//   let x = {}
-//   let y = {
-//     a: {
-//       [symbols.behavior]: symbols.behaviors.clone,
-//       __proto__: {
-//         aa: 11
-//       },
-//       bb: {
-//         bbb: 222
-//       }
-//     }
-//   }
-//   assignPlus(x, y)
-//   assert.deepEqual(x, y, 'Cloning failed.')
-//   assert.ok(!Object.is(x.a, y.a), 'Cloned property is merely copied.')
-//   assert.ok(Object.is(x.a.prototype, y.a.prototype), 'Prototype is not shared upon cloning.')
-//   assert.ok(!Object.is(x.a.bb, y.a.bb), 'Object properties are merely copied upon cloning.')
-// })()
-
 // Remove Behavior.
 assert.deepEqual(
   assignPlus(

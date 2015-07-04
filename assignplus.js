@@ -13,11 +13,6 @@ export default function assignPlus (target, ...sources) {
         case symbols.behaviors.deep:
           recurse(target[name], source[name], true)
           break
-        case symbols.behaviors.clone:
-          // TODO: Implement cloning.
-          console.warn(`Clone behavior not yet implemented. Source merely copied.`)
-          target[name] = source[name]
-          break
         case symbols.behaviors.define:
           Object.defineProperty(target, name, source[name])
           break
@@ -85,7 +80,6 @@ export const symbols = {
     merge: Symbol('merge'),
     deep: Symbol('deep merge'),
     overwrite: Symbol('overwrite'),
-    clone: Symbol('deep clone'),
     define: Symbol('define'),
     remove: Symbol('delete')
   }
