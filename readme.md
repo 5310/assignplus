@@ -5,7 +5,7 @@
 [![License](http://img.shields.io/badge/license-mit-green.svg?style=flat)](https://github.com/lahuan/lahuanjs-com-events/blob/master/LICENSE)
 [![Dependency Status](https://david-dm.org/5310/assignplus.svg)](https://david-dm.org/5310/assignplus)
 [![Build](http://img.shields.io/travis/5310/assignplus.svg?style=flat)](https://travis-ci.org/5310/assignplus)
-[![Release](http://img.shields.io/badge/release-v0.1.1-orange.svg?style=flat)](https://github.com/5310/assignplus/releases)
+[![Release](http://img.shields.io/badge/release-v1.0.0-blue.svg?style=flat)](https://github.com/5310/assignplus/releases)
 [![jspm](https://img.shields.io/badge/jspm-github:5310/assignplus-blue.svg?style=flat)](http://jspm.io)
 [![jspm](https://img.shields.io/badge/npm-5310/assignplus-blue.svg?style=flat)](https://docs.npmjs.com/cli/install)
 
@@ -13,13 +13,14 @@
 
 With it you can not only do what `Object.assign` can, copy first-level enumerable own-properties of a object to another, but also merge property objects, whether by an object-by-object basis or recursively, and fully define properties on the target, or remove a property entirely. All with symbolic annotations defining the assignment behaviors.
 
-This is an ES2015 module.
+This is written as an ES2015 module, and transpiled with Babel upon installation for NPM.
 
 ## Usage
 
 - `assignPlus(target, source)`
   - The source objects properties will be assigned to the target object.
   - Without annotation, behaves just like `Object.assign`.
+  - Invalid behavior annotations will be ignored.
 
 - Behaviors:
   - Default

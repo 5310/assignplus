@@ -20,7 +20,6 @@ export default function assignPlus (target, ...sources) {
           delete target[name]
           break
         default:
-          // TODO: Invalid behavior warning.
           if (typeof source[name][symbols.behavior] === 'function') {
             implement(
               name,
@@ -76,12 +75,6 @@ export default function assignPlus (target, ...sources) {
   }
 
   for (let source of sources) {
-    // if (
-    //   source[symbols.behavior] !== symbols.deep &&
-    //   typeof source[symbols.behavior] !== 'function'
-    // ) {
-    //   console.warn(`Invalid behavior on root object, not deep merge or a handler, ignored.`)
-    // }
     recurse(target, source)
   }
 
