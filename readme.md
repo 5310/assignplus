@@ -102,7 +102,9 @@ assignPlus(x, {
     [symbols.behavior]: symbols.behaviors.define,
     get: () => 123,
     enumerable: true
-  }
+  },
+  random: { [symbols.behavior]: (target, source) => 4 }
+  // chosen by a fair dice roll, guaranteed to be random
 })
 
 assert.deepEqual(x, {
@@ -122,7 +124,8 @@ assert.deepEqual(x, {
     },
     rotation: 0
   },
-  id: 123
+  id: 123,
+  random: 4
 })
 ```
 Look at the `test.js` file for even more examples of the behaviors.

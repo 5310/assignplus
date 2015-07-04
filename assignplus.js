@@ -20,13 +20,28 @@ export default function assignPlus (target, ...sources) {
           delete target[name]
           break
         default:
-          // Invalid behavior warning.
-          if (deep) {
-            recurse(target[name], source[name], deep)
+          // TODO: Invalid behavior warning.
+          if (typeof source[name][symbols.behavior] === 'function') {
+            implement(
+              name,
+              target,
+              {
+                [name]: source[name][symbols.behavior](
+                  target[name],
+                  source[name]
+                )
+              },
+              deep
+            )
+            break
           } else {
-            target[name] = source[name]
+            if (deep) {
+              recurse(target[name], source[name], deep)
+            } else {
+              target[name] = source[name]
+            }
+            break
           }
-          break
       }
     } else {
       target[name] = source[name]
